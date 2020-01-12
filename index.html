@@ -233,7 +233,7 @@
 										<p class="ml-5 font-italic font-weight-light">` + post.ask + `</p>
 									</div>
 									<div class="mx-3 my-3">
-										<button type="button" class="hype-btn btn btn-primary">
+										<button id = "hypebutton" type="button" class="hype-btn btn btn-primary">
   											SEND HYPE 🔥 <span class="badge badge-light">7</span>
 										</button>
 									</div>
@@ -264,6 +264,7 @@
 				</div>
 				<!-- POST ============================= -->`);
 					$("#post-container").append(container);
+					$("#hypebutton").click(increaseGlobalHype());
 					if (post.responses != null) {
 						for (let i in post.responses) {
 							console.log(key, post.responses[i]);
@@ -319,19 +320,6 @@
 											hypescore: newval
 										});
 									});
-
-
-									//var sb = "posts/"+key+"/responses/" + i;
-									// console.log(sb);
-									// var newval = 
-									// var dbRef = firebase.database().ref("posts/"+key+"/responses/" + i);
-									// dbRef.once("value", function(snap){
-									// 	console.log(hypescore);
-									// 	dbRef.update({
-									// 		hypescore : newval
-									// 	});
-									// });
-									//  firebase.database().ref(sb).update({sb:newval});
 								});
 							} else if (element.type == "video") {
 								let responseContainer = $(`<div class="row">
@@ -351,6 +339,34 @@
 									</div>
 								</div>`);
 								$("#response-container-" + key).append(responseContainer);
+
+								$("#hypescore-up-" + key + "" + i).click(() => {
+									//console.log("hello")
+									var hypescoreRef = firebase.database().ref("posts/" + key + "/responses/" +
+									i);
+									console.log("posts/" + key + "/responses/" + i)
+									hypescoreRef.once("value", function (snap) {
+										console.log(snap.val());
+										var newval = snap.val().hypescore + 1;
+										hypescoreRef.update({
+											hypescore: newval
+										});
+									})
+								});
+
+								$("#hypescore-down-" + key + "" + i).click(() => {
+									//console.log("hello")
+									var hypescoreRef = firebase.database().ref("posts/" + key + "/responses/" +
+									i);
+									console.log("posts/" + key + "/responses/" + i)
+									hypescoreRef.once("value", function (snap) {
+										console.log(snap.val());
+										var newval = snap.val().hypescore - 1;
+										hypescoreRef.update({
+											hypescore: newval
+										});
+									});
+								});
 							}
 						};
 
