@@ -264,7 +264,18 @@
 				</div>
 				<!-- POST ============================= -->`);
 					$("#post-container").append(container);
-					$("#hypebutton").click(increaseGlobalHype());
+					// $("#hypebutton").click(increaseGlobalHype());
+					$("#hypebutton").click(() => {
+									//console.log("hello")
+									var hypescoreRef = firebase.database().ref("/");
+									hypescoreRef.once("value", function (snap) {
+										console.log(snap.val());
+										var newval = snap.val().hypescore + 1;
+										hypescoreRef.update({
+											"gb_hypescore": newval
+										});
+									});
+								});
 					if (post.responses != null) {
 						for (let i in post.responses) {
 							console.log(key, post.responses[i]);
