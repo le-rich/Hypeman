@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div id="hype-boost-button" class="button text-center shadow-sm anim-swoosh-right">
-		<img src="css/img/hype-black.png" width="auto" height="64px">
+		<img src="css/img/hype.png" width="auto" height="64px">
 	</div>
 	<div id="header-container" class="container-fluid text-left">
 		<div id="header-row" class="row">
@@ -22,7 +22,7 @@
 					<img src="css/img/logo2.png" width="auto" height="42px">
 				</h1>
 			</div>
-			<div class="col-2 ml-auto">
+			<div id="right-third" class="col-2 ml-auto">
 				<div class="container-fluid text-center">
 					<div class="row">
 						<div id="profile-card" class="col-11 anim-swoosh-right-slow">
@@ -76,9 +76,14 @@
 									<div class="col-12 mt-3">
 										<h2 class="">
 											<img class="post-picture-div" class="mx-auto my-4"></img>
-											<span id="user-says" class="font-weight-light font-italic">BlackBeltGoose says: </span>
+											<span id="user-says" class="font-weight-bold">BlackBeltGoose says: </span>
 										</h2>
-										<p class="ml-5">I've been unemployed for two years and I am heading into a job interview. I'm so nervous, give me your energy!!</p>
+										<p class="ml-5 font-italic font-weight-light">I've been unemployed for two years and I am heading into a job interview. I'm so nervous, give me your energy!!</p>
+									</div>
+									<div class="mx-3 my-3">
+										<button type="button" class="hype-btn btn btn-primary">
+  											SEND HYPE 🔥 <span class="badge badge-light">7</span>
+										</button>
 									</div>
 								</div>
 								<div class="row mt-3">
@@ -93,18 +98,20 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-6 ml-auto post-response py-3 my-3 speech-bubble-right">
-										This is a response.
+									<div class="col-3 py-3 my-3 ml-auto">
+										
 									</div>
-								</div>
-								<div class="row">
-									<div class="col-6 ml-auto post-response py-3 my-3 speech-bubble-right">
-										This is a response.
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-6 ml-auto post-response py-3 my-3 speech-bubble-right">
-										This is a response.
+									<div class="col-6 post-response py-3 my-3 speech-bubble-right">
+										<div class="mb-2">
+											<span>This is a response.</span>
+										</div>
+										<button type="button" class="hype-btn btn btn-primary">
+  											 🔥 
+										</button>
+										<button type="button" class="downhype-btn btn btn-primary">
+  											 🤮
+										</button>
+										<span class="ml-1 badge badge-light">7</span>
 									</div>
 								</div>
 							</div>
@@ -112,7 +119,7 @@
 					</div>
 					<div class="row my-2">
 						<div class="col-3 mx-auto mb-3 mt-4 text-center">
-							+ HYPE
+							<button type="button" class="btn btn-primary font-weight-bold">+ SEND RESPONSE</button>
 						</div>
 					</div>
 				</div>
@@ -127,7 +134,12 @@
 
 
 
-
+	<!-- JQUERY -->
+	<script
+	  src="https://code.jquery.com/jquery-3.4.1.js"
+	  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+	  crossorigin="anonymous">
+	</script>
 	<!-- BOOTSTRAP -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
