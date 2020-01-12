@@ -45,6 +45,10 @@ window.onload = function() {
         alert('getUserMedia threw exception :' + e);
     }
 
+    var dbPostRef = firebase.database().ref("gb_hypescore");
+    dbPostRef.once("value", function(snap){
+       $("#hype-count").text(snap.val());
+    });
 }
 
 
@@ -118,11 +122,15 @@ function StartCollectHype(){
 function StopCollectHype(){
 	collecting = false;
 	$("#hype-count").text("" + (parseInt($("#hype-count").text(), 10) + parseInt($("#boost-val").text(), 10)));	
+    var dbPostRef = firebase.database().ref("gb_hypescore");
+    dbPostRef.once("value", function(snap){
+       dbPostRef.update(parseInt($("#hype-count").text(), 10));
+    });
 }
 
 
 $("#submit-form-btn").click(function(){
-	var posttext = $("post-text").text();
+	var posttext = $("#post-text").val();
 	var emertag = $('#inlineCheckbox1:checked').val();
 	var lowtag = $('#inlineCheckbox2:checked').val();
 	var postag = $('#inlineCheckbox3:checked').val();
