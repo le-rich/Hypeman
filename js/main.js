@@ -78,7 +78,6 @@ function drawLoop( time ) {
 
     // draw a bar based on the current volume
     canvasContext.fillRect(0, 0, meter.volume*WIDTH*1.4, HEIGHT);
-    // console.log(meter.volume*WIDTH*1.4);
     if (collecting && meter.volume*WIDTH*1.4 > 70){
     	$("#boost-val").text("" + (parseInt($("#boost-val").text(), 10) + (meter.volume*WIDTH / 250)).toFixed());
     }
@@ -118,7 +117,44 @@ function StartCollectHype(){
 
 function StopCollectHype(){
 	collecting = false;
-	$("#hype-count").text("" + (parseInt($("#hype-count").text(), 10) + parseInt($("#boost-val").text(), 10)));
-	
+	$("#hype-count").text("" + (parseInt($("#hype-count").text(), 10) + parseInt($("#boost-val").text(), 10)));	
 }
+
+
+$("#submit-form-btn").click(function(){
+	var posttext = $("post-text").text();
+	var emertag = $('#inlineCheckbox1:checked').val();
+	var lowtag = $('#inlineCheckbox2:checked').val();
+	var postag = $('#inlineCheckbox3:checked').val();
+	var breadtag = $('#inlineCheckbox4:checked').val();
+	var name = "Demoman";
+
+	if (emertag == null){
+		emertag = "hidden";
+	}
+	if (lowtag == null){
+		lowtag = "hidden";
+	}
+	if (postag == null){
+		postag = "hidden";
+	}
+	if (breadtag == null){
+		breadtag = "hidden";
+	}
+
+
+	var dbPostRef = firebase.database().ref("posts");
+	dbPostRef.once("value", function(snap){
+		dbPostRef.push(
+			{
+				"ask": posttext,
+				"hypescore": 0,
+				"tags": [emertag, lowtag, postag, breadtag],
+				"username": name
+			}
+		);
+	});
+
+
+});
 
