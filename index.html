@@ -85,7 +85,8 @@
 			<div class="col-6 mx-auto">
 				<div id="make-post" class="container-fluid mb-3 shadow-sm text-left anim-swoosh-down">
 					<div class="input-group mb-auto">
-						<textarea id="post-text" class="mt-3 form-control" rows="3" placeholder="What's on your mind?" required></textarea>
+						<textarea id="post-text" class="mt-3 form-control" rows="3" placeholder="What's on your mind?"
+							required></textarea>
 					</div>
 					<div class="btn-group btn-group-toggle my-1 mb-3" data-toggle="buttons">
 						<label class="btn btn-secondary active">
@@ -99,23 +100,28 @@
 						<span class="font-weight-light pr-3">Tags:</span>
 						<div class="form-check form-check-inline">
 							<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="red">
-							<label class="form-check-label" for="inlineCheckbox1"><span class="badge badge-danger">HYPE EMERGENCY</span></label>
+							<label class="form-check-label" for="inlineCheckbox1"><span class="badge badge-danger">HYPE
+									EMERGENCY</span></label>
 						</div>
 						<div class="form-check form-check-inline">
 							<input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="yellow">
-							<label class="form-check-label" for="inlineCheckbox2"><span class="badge badge-warning">LOW ON HYPE</span></label>
+							<label class="form-check-label" for="inlineCheckbox2"><span class="badge badge-warning">LOW
+									ON HYPE</span></label>
 						</div>
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="green" >
-							<label class="form-check-label" for="inlineCheckbox3"><span class="badge badge-success">POSITIVE ENERGY</span> </label>
+							<input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="green">
+							<label class="form-check-label" for="inlineCheckbox3"><span
+									class="badge badge-success">POSITIVE ENERGY</span> </label>
 						</div>
 						<div class="form-check form-check-inline">
 							<input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="green2">
-							<label class="form-check-label" for="inlineCheckbox4"><span class="badge badge-success">LET'S GET THIS BREAD</span> </label>
+							<label class="form-check-label" for="inlineCheckbox4"><span
+									class="badge badge-success">LET'S GET THIS BREAD</span> </label>
 						</div>
 					</div>
 					<div class="text-right mb-3">
-						<button type="button" id="submit-form-btn" class="ml-auto btn btn-primary btn-sm mb-3">Submit Post</button>
+						<button type="button" id="submit-form-btn" class="ml-auto btn btn-primary btn-sm mb-3">Submit
+							Post</button>
 					</div>
 				</div>
 				<div id="post-container">
@@ -264,10 +270,10 @@
 				console.log(snap.val());
 
 				const myNode = document.getElementById("post-container");
-					while (myNode.firstChild) {
-						myNode.removeChild(myNode.firstChild);
-					}
-				
+				while (myNode.firstChild) {
+					myNode.removeChild(myNode.firstChild);
+				}
+
 				for (let key in snap.val()) {
 					console.log(key, snap.val()[key]);
 					let post = snap.val()[key];
@@ -276,7 +282,7 @@
 				<div class="container-fluid mb-3 ask-post shadow-sm text-left anim-swoosh-down">
 					<div class="row">
 						<div class="col-12">
-							<div id="reponse-container-` + key + `" class="container-fluid">
+							<div class="container-fluid">
 								<div class="post-main row speech-bubble-left mt-3 shadow-sm">
 									<div class="col-12 mt-3">
 										<h2 class="">
@@ -302,20 +308,22 @@
 										<span class="badge badge-success">LET'S GET THIS BREAD</span>
 									</div>
 								</div>
-								<div class="row">
-									<div class="col-3 py-3 my-3 ml-auto">	
-									</div>
-									<div class="col-6 post-response py-3 my-3 speech-bubble-right">
-										<div class="mb-2">
-											<span>This is a response.</span>
+								<div id="response-container-` + key + `">
+									<div class="row">
+										<div class="col-3 py-3 my-3 ml-auto">	
 										</div>
-										<button type="button" class="hype-btn btn btn-primary">
-  											 🔥 
-										</button>
-										<button type="button" class="downhype-btn btn btn-primary">
-  											 🤮
-										</button>
-										<span class="ml-1 badge badge-light">7</span>
+										<div class="col-6 post-response py-3 my-3 speech-bubble-right">
+											<div class="mb-2">
+												<span>This is a response.</span>
+											</div>
+											<button type="button" class="hype-btn btn btn-primary">
+												🔥 
+											</button>
+											<button type="button" class="downhype-btn btn btn-primary">
+												🤮
+											</button>
+											<span class="ml-1 badge badge-light">7</span>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -328,9 +336,12 @@
 					</div>
 				</div>
 				<!-- POST ============================= -->`);
+					$("#post-container").append(container);
 					if (post.responses != null) {
-						post.responses.forEach(element => {
+						for (i = 0; i < post.responses.length; i++) {
+							element = post.responses[i];
 							if (element.type == "text") {
+								console.log("works")
 								let responseContainer = $(`<div class="row">
 									<div class="col-3 py-3 my-3 ml-auto">	
 									</div>
@@ -338,16 +349,21 @@
 										<div class="mb-2">
 											<span>` + element.val + `</span>
 										</div>
-										<button type="button" class="hype-btn btn btn-primary">
+										<button id="hypescore-up-` + key + i + ` type="button" class="hype-btn btn btn-primary">
   											 🔥 
 										</button>
-										<button type="button" class="downhype-btn btn btn-primary">
+										<button id="hypescore-up-` + key + i + ` type="button" class="downhype-btn btn btn-primary">
   											 🤮
 										</button>
 										<span class="ml-1 badge badge-light">` + element.hypescore + `</span>
 									</div>
 								</div>`);
-								$("#reponse-container-" + key).append(responseContainer);
+
+								$("#hypescore-up-" + key + i).click(function () {
+									var hypescoreRef = firebase.database().ref("posts/"+key+"/responses/"+i);
+									return firebase.database().ref().updates({["posts/"+key+"/responses/"+i]:element.hypescore+1})
+								});
+								$("#response-container-" + key).append(responseContainer);
 							} else if (element.type == "video") {
 								let responseContainer = $(`<div class="row">
 									<div class="col-3 py-3 my-3 ml-auto">	
@@ -356,23 +372,23 @@
 										<div class="mb-2">
 											<span>` + element.val + `</span>
 										</div>
-										<button type="button" class="hype-btn btn btn-primary">
+										<button id="hypescore-up-` + key + i + ` type="button" class="hype-btn btn btn-primary">
   											 🔥 
 										</button>
-										<button type="button" class="downhype-btn btn btn-primary">
+										<button id="hypescore-up-` + key + i + ` type="button" class="downhype-btn btn btn-primary">
   											 🤮
 										</button>
 										<span class="ml-1 badge badge-light">` + element.hypescore + `</span>
 									</div>
 								</div>`);
-								$("#reponse-container-" + post.id).append(responseContainer);
+								$("#response-container-" + key).append(responseContainer);
 							}
-						});
-						
+						};
+
 					}
-					$("#post-container").append(container);
+
 				}
-				
+
 			});
 	</script>
 </body>
