@@ -78,7 +78,7 @@ function drawLoop( time ) {
 
     // draw a bar based on the current volume
     canvasContext.fillRect(0, 0, meter.volume*WIDTH*1.4, HEIGHT);
-    console.log(meter.volume*WIDTH*1.4);
+    // console.log(meter.volume*WIDTH*1.4);
     if (collecting && meter.volume*WIDTH*1.4 > 70){
     	$("#boost-val").text("" + (parseInt($("#boost-val").text(), 10) + (meter.volume*WIDTH / 250)).toFixed());
     }
