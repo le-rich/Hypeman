@@ -169,11 +169,11 @@ $("#submit-form-btn").click(function(){
 
 function increaseGlobalHype(){
     console.log("gelp")
-    var dbPostRef = firebase.database().ref("gb_hypescore");
+    var dbPostRef = firebase.database().ref("/");
     dbPostRef.once("value", function(snap){
         console.log(snap.val())
         let newval = snap.val()+1;
-       dbPostRef.update({newval});
+       dbPostRef.update({gb_hypescore:newval});
     });
 }
 
