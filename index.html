@@ -216,10 +216,8 @@
 
 
 	<!-- JQUERY -->
-	<script
-	  src="https://code.jquery.com/jquery-3.4.1.js"
-	  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-	  crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.4.1.js"
+		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
 	</script>
 	<!-- BOOTSTRAP -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -240,20 +238,101 @@
 	<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
 
 	<!-- TODO: Add SDKs for Firebase products that you want to use
-	     https://firebase.google.com/docs/web/setup#available-libraries -->
+		 https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-database.js"></script>
+	<!-- <script src="render.js"></script> -->
+
 	<script>
-	  // Your web app's Firebase configuration
-	  var firebaseConfig = {
-	    apiKey: "AIzaSyB4IG6DOJJHWoD4H50Pibt2fMU7fcdWuTo",
-	    authDomain: "hypeman-nw2020.firebaseapp.com",
-	    databaseURL: "https://hypeman-nw2020.firebaseio.com",
-	    projectId: "hypeman-nw2020",
-	    storageBucket: "hypeman-nw2020.appspot.com",
-	    messagingSenderId: "342502727786",
-	    appId: "1:342502727786:web:0d2756e8455b53d9f82a13"
-	  };
-	  // Initialize Firebase
-	  firebase.initializeApp(firebaseConfig);
+		// Your web app's Firebase configuration
+		var firebaseConfig = {
+			apiKey: "AIzaSyB4IG6DOJJHWoD4H50Pibt2fMU7fcdWuTo",
+			authDomain: "hypeman-nw2020.firebaseapp.com",
+			databaseURL: "https://hypeman-nw2020.firebaseio.com",
+			projectId: "hypeman-nw2020",
+			storageBucket: "hypeman-nw2020.appspot.com",
+			messagingSenderId: "342502727786",
+			appId: "1:342502727786:web:0d2756e8455b53d9f82a13"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+
+		//Get reference to database
+		var dbItemsRef = firebase.database().ref().child("posts");
+
+		dbItemsRef.on(
+			"value",
+			function (snap) {
+				console.log("Get posts successful!");
+				console.log(snap.val());
+				console.log(snap.val()[snap.val().length - 1]);
+				let post = snap.val()[snap.val().length - 1];
+				var container = $(`
+				<!-- POST ============================== -->
+				<div class="container-fluid mb-3 ask-post shadow-sm text-left anim-swoosh-down">
+					<div class="row">
+						<div class="col-12">
+							<div class="container-fluid">
+								<div class="post-main row speech-bubble-left mt-3 shadow-sm">
+									<div class="col-12 mt-3">
+										<h2 class="">
+											<img class="post-picture-div" class="mx-auto my-4"></img>
+											<span id="user-says" class="font-weight-bold">`+post.username+` says: </span>
+										</h2>
+										<p class="ml-5 font-italic font-weight-light">`+post.ask+`</p>
+									</div>
+									<div class="mx-3 my-3">
+										<button type="button" class="hype-btn btn btn-primary">
+  											SEND HYPE 🔥 <span class="badge badge-light">7</span>
+										</button>
+									</div>
+								</div>
+								<div class="row mt-3">
+									<div class="col-1">
+										<span class="font-weight-bold">Tags: </span>
+									</div>
+									<div class="col-9 mr-auto">
+										<span class="badge badge-danger">HYPE EMERGENCY</span>
+										<span class="badge badge-warning">LOW ON HYPE</span>
+										<span class="badge badge-success">POSITIVE ENERGY</span>
+										<span class="badge badge-success">LET'S GET THIS BREAD</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-3 py-3 my-3 ml-auto">
+										
+									</div>
+									<div class="col-6 post-response py-3 my-3 speech-bubble-right">
+										<div class="mb-2">
+											<span>This is a response.</span>
+										</div>
+										<button type="button" class="hype-btn btn btn-primary">
+  											 🔥 
+										</button>
+										<button type="button" class="downhype-btn btn btn-primary">
+  											 🤮
+										</button>
+										<span class="ml-1 badge badge-light">7</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row my-2">
+						<div class="col-3 mx-auto mb-3 mt-4 text-center">
+							<button type="button" class="btn btn-primary font-weight-bold">+ SEND RESPONSE</button>
+						</div>
+					</div>
+				</div>
+				<!-- POST ============================= -->`);
+
+				$("#posts-container").append(container);
+				// snap.val().forEach(function (element) {
+				// 	let temp = new Item(element);
+				// 	//console.log(temp);
+				// 	$("#post-container").append(temp.displayBrowse());
+				// })
+				// 		// localStorage.setItem("numberOfItem", snap.val().length);
+			});
 	</script>
 </body>
 
