@@ -309,7 +309,7 @@ a:hover{
   height: 128px;
   background-color: white;
   border-radius: 50%;
-  background-image: url('img/prof.jpg');
+  background-image: url('https://api.adorable.io/avatars/285/demoman');
   background-position: center;
   background-size: contain;
 }
