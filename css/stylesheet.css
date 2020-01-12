@@ -59,6 +59,7 @@ html, body{
 	padding: 0;
   background-color: #F1F1F1;
   font-family: "RedHatText";
+  overflow-y: none;
 }
 
 p{
@@ -134,11 +135,18 @@ a:hover{
   border-radius: 50%;
 }
 
+#post-container{
+  max-height: 500px;
+  overflow-y: scroll;
+  overflow-x: visible;
+}
+
 .speech-bubble-left {
   position: relative;
   background: #282828;
   border-radius: .4em;
   min-height: 40px;
+  z-index: 10;
 }
 
 .speech-bubble-left:after {
@@ -148,11 +156,11 @@ a:hover{
   top: 50%;
   width: 0;
   height: 0;
-  border: 30px solid transparent;
+  border: 15px solid transparent;
   border-right-color: #282828;
   border-left: 0;
-  margin-top: -30px;
-  margin-left: -30px;
+  margin-top: -15px;
+  margin-left: -15px;
 }
 
 .speech-bubble-right {
