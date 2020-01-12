@@ -262,7 +262,7 @@
 			function (snap) {
 				console.log("Get posts successful!");
 				console.log(snap.val());
-				
+
 				const myNode = document.getElementById("post-container");
 					while (myNode.firstChild) {
 						myNode.removeChild(myNode.firstChild);
@@ -276,7 +276,7 @@
 				<div class="container-fluid mb-3 ask-post shadow-sm text-left anim-swoosh-down">
 					<div class="row">
 						<div class="col-12">
-							<div id="reponse-container-` + post.id + `" class="container-fluid">
+							<div id="reponse-container-` + key + `" class="container-fluid">
 								<div class="post-main row speech-bubble-left mt-3 shadow-sm">
 									<div class="col-12 mt-3">
 										<h2 class="">
@@ -347,7 +347,7 @@
 										<span class="ml-1 badge badge-light">` + element.hypescore + `</span>
 									</div>
 								</div>`);
-								$("#reponse-container-" + post.id).append(responseContainer);
+								$("#reponse-container-" + key).append(responseContainer);
 							} else if (element.type == "video") {
 								let responseContainer = $(`<div class="row">
 									<div class="col-3 py-3 my-3 ml-auto">	
@@ -368,15 +368,11 @@
 								$("#reponse-container-" + post.id).append(responseContainer);
 							}
 						});
-						$("#post-container").append(container);
-						// snap.val().forEach(function (element) {
-						// 	let temp = new Item(element);
-						// 	//console.log(temp);
-						// 	$("#post-container").append(temp.displayBrowse());
-						// })
-						// 		// localStorage.setItem("numberOfItem", snap.val().length);
+						
 					}
+					$("#post-container").append(container);
 				}
+				
 			});
 	</script>
 </body>
