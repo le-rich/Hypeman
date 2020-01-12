@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Hypeman</title>
 	<!-- BOOTSTRAP -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<!-- FONTS -->
 	<link href="https://fonts.googleapis.com/css?family=Fugaz+One&display=swap" rel="stylesheet">
 	<!-- CUSTOM -->
 	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 
 </head>
+
 <body>
 	<div id="hype-boost-button" class="button text-center shadow-sm anim-swoosh-right">
 		<img src="css/img/hype.png" width="auto" height="64px">
@@ -40,7 +43,7 @@
 								</div>
 								<div class="triangleWrapper">
 									<div style="height: 100%;" class="righttriangle"></div>
-								</div> 
+								</div>
 							</div>
 						</div>
 					</div>
@@ -49,24 +52,64 @@
 		</div>
 	</div>
 	<div id="header-spacer"></div>
-	<div id ="body-container" class="container-fluid text-left">
+	<div id="body-container" class="container-fluid text-left">
 		<div class="row mt-5">
 			<div class="col-2 ml-1 mr-5 anim-swoosh-left-slow">
 				<h5 class="ml-2">This week's hypest</h5>
 				<ul class="list-group shadow-sm">
-				  <li class="list-group-item">Cras justo odio</li>
-				  <li class="list-group-item">Dapibus ac facilisis in</li>
-				  <li class="list-group-item">Morbi leo risus</li>
-				  <li class="list-group-item">Porta ac consectetur ac</li>
-				  <li class="list-group-item">Vestibulum at eros</li>
-				  <li class="list-group-item">Cras justo odio</li>
-				  <li class="list-group-item">Dapibus ac facilisis in</li>
-				  <li class="list-group-item">Morbi leo risus</li>
-				  <li class="list-group-item">Porta ac consectetur ac</li>
-				  <li class="list-group-item">Vestibulum at eros</li>
+					<li class="list-group-item">Cras justo odio</li>
+					<li class="list-group-item">Dapibus ac facilisis in</li>
+					<li class="list-group-item">Morbi leo risus</li>
+					<li class="list-group-item">Porta ac consectetur ac</li>
+					<li class="list-group-item">Vestibulum at eros</li>
+					<li class="list-group-item">Cras justo odio</li>
+					<li class="list-group-item">Dapibus ac facilisis in</li>
+					<li class="list-group-item">Morbi leo risus</li>
+					<li class="list-group-item">Porta ac consectetur ac</li>
+					<li class="list-group-item">Vestibulum at eros</li>
 				</ul>
 			</div>
 			<div class="col-6 mx-auto">
+				<div id="make-post" class="container-fluid mb-3 shadow-sm text-left">
+					<div class="input-group mb-auto">
+						<input type="text" class="form-control" placeholder="whatsup" aria-label="whatsup"
+							aria-describedby="basic-addon2">
+					</div>
+
+					<div class="btn-group-sm mb-3 " role="group" aria-label="Basic example">
+						<button type="button" class="btn btn-secondary">hype</button>
+						<button type="button" class="btn btn-secondary">ask</button>
+					</div>
+
+					<div class="input-group-sm mb-3">
+						<input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
+						<div class="input-group-append">
+							<button type="button" class="btn btn-outline-secondary">Add</button>
+							<button type="button"
+								class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="sr-only">Toggle Dropdown</span>
+							</button>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="#">red</a>
+								<a class="dropdown-item" href="#">yellow</a>
+								<a class="dropdown-item" href="#">green</a>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-3 mb-3">
+						<div class="col-1">
+							<span class="font-weight-bold">Tags: </span>
+						</div>
+						<div class="col-9 mr-auto">
+							<span class="badge badge-danger">HYPE EMERGENCY</span>
+							<span class="badge badge-warning">LOW ON HYPE</span>
+							<span class="badge badge-success">LET'S GET THIS BREAD</span>
+							<span class="badge badge-success">WE OUT HERE</span>
+						</div>
+					</div>
+					<button type="button" class="btn btn-primary btn-sm mb-3">send</button>
+				</div>
 				<!-- POST ============================== -->
 				<div class="container-fluid mb-3 ask-post shadow-sm text-left anim-swoosh-down">
 					<div class="row">
@@ -141,9 +184,15 @@
 	  crossorigin="anonymous">
 	</script>
 	<!-- BOOTSTRAP -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+	</script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+	</script>
 	<!-- CUSTOM -->
 	<script type="text/javascript" src="js/main.js"></script>
 
@@ -168,4 +217,5 @@
 	  firebase.initializeApp(firebaseConfig);
 	</script>
 </body>
+
 </html>
