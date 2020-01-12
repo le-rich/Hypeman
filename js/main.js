@@ -166,3 +166,11 @@ $("#submit-form-btn").click(function(){
 
 });
 
+
+function increaseGlobalHype(){
+    var dbPostRef = firebase.database().ref("gb_hypescore");
+    dbPostRef.once("value", function(snap){
+       dbPostRef.update(snap.val()++);
+    });
+}
+
