@@ -313,10 +313,6 @@ a:hover{
   background-position: center;
   background-size: contain;
 }
-
-
-
-
 .anim-swoosh-left {
   animation: swoosh-left 1000ms linear both;
 }

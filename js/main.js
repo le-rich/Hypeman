@@ -122,10 +122,13 @@ function StartCollectHype(){
 function StopCollectHype(){
 	collecting = false;
 	$("#hype-count").text("" + (parseInt($("#hype-count").text(), 10) + parseInt($("#boost-val").text(), 10)));	
-    var dbPostRef = firebase.database().ref("gb_hypescore");
+    var dbPostRef = firebase.database().ref("/");
+    var newval = parseInt($("#hype-count").text(), 10);
     dbPostRef.once("value", function(snap){
-       dbPostRef.update(parseInt($("#hype-count").text(), 10));
-    });
+       dbPostRef.update({
+            "gb_hypescore": newval
+        });
+   });
 }
 
 
@@ -165,6 +168,22 @@ $("#submit-form-btn").click(function(){
 
 
 });
+
+function createResponse(postId){
+    console.log(postId);
+    var newtext = $("#response-text").val();
+
+    var dbPostRef = firebase.database().ref("posts/" + postId + "/responses");
+    dbPostRef.once("value", function(snap){
+        dbPostRef.push(
+            {
+                "hypescore": 0,
+                "type": "text",
+                "val": newtext
+            }
+        );
+    });
+}
 
 
 function increaseGlobalHype(){
