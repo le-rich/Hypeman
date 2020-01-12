@@ -125,7 +125,7 @@
 					</div>
 				</div>
 				<div id="post-container" class="anim-swoosh-down-slow">
-				<!-- POST CONTAINER -->
+					<!-- POST CONTAINER -->
 				</div>
 			</div>
 			<div class="col-1 mr-auto"></div>
@@ -249,24 +249,7 @@
 										<span class="badge badge-success">LET'S GET THIS BREAD</span>
 									</div>
 								</div>
-								<div id="response-container-` + key + `">
-									<div class="row">
-										<div class="col-3 py-3 my-3 ml-auto">	
-										</div>
-										<div class="col-6 post-response py-3 my-3 speech-bubble-right">
-											<div class="mb-2">
-												<span>This is a response.</span>
-											</div>
-											<button type="button" class="hype-btn btn btn-primary">
-												🔥 
-											</button>
-											<button type="button" class="downhype-btn btn btn-primary">
-												🤮
-											</button>
-											<span class="ml-1 badge badge-light">7</span>
-										</div>
-									</div>
-								</div>
+								<div id="response-container-` + key + `"></div>
 							</div>
 						</div>
 					</div>
@@ -282,7 +265,10 @@
 				<!-- POST ============================= -->`);
 					$("#post-container").append(container);
 					if (post.responses != null) {
-						for (i = 0; i < post.responses.length; i++) {
+						for (let i in post.responses) {
+							console.log(key, post.responses[i]);
+							// 	let el = snap.val()[key];
+							// for (var i = 0; i < post.responses.length; i++) {
 							element = post.responses[i];
 							if (element.type == "text") {
 								console.log("works")
@@ -293,21 +279,60 @@
 										<div class="mb-2">
 											<span>` + element.val + `</span>
 										</div>
-										<button id="hypescore-up-` + key + i + ` type="button" class="hype-btn btn btn-primary">
+										<button id="hypescore-up-` + key + "" + i + `" type="button" class="hype-btn btn btn-primary">
   											 🔥 
 										</button>
-										<button id="hypescore-up-` + key + i + ` type="button" class="downhype-btn btn btn-primary">
+										<button id="hypescore-down-` + key + "" + i + `" type="button" class="downhype-btn btn btn-primary">
   											 🤮
 										</button>
 										<span class="ml-1 badge badge-light">` + element.hypescore + `</span>
 									</div>
 								</div>`);
 
-								$("#hypescore-up-" + key + i).click(function () {
-									var hypescoreRef = firebase.database().ref("posts/"+key+"/responses/"+i);
-									return firebase.database().ref().updates({["posts/"+key+"/responses/"+i]:element.hypescore+1})
-								});
+
+
 								$("#response-container-" + key).append(responseContainer);
+
+								$("#hypescore-up-" + key + "" + i).click(() => {
+									//console.log("hello")
+									var hypescoreRef = firebase.database().ref("posts/" + key + "/responses/" +
+									i);
+									console.log("posts/" + key + "/responses/" + i)
+									hypescoreRef.once("value", function (snap) {
+										console.log(snap.val());
+										var newval = snap.val().hypescore + 1;
+										hypescoreRef.update({
+											hypescore: newval
+										});
+									})
+								});
+
+								$("#hypescore-down-" + key + "" + i).click(() => {
+									//console.log("hello")
+									var hypescoreRef = firebase.database().ref("posts/" + key + "/responses/" +
+									i);
+									console.log("posts/" + key + "/responses/" + i)
+									hypescoreRef.once("value", function (snap) {
+										console.log(snap.val());
+										var newval = snap.val().hypescore - 1;
+										hypescoreRef.update({
+											hypescore: newval
+										});
+									});
+
+
+									//var sb = "posts/"+key+"/responses/" + i;
+									// console.log(sb);
+									// var newval = 
+									// var dbRef = firebase.database().ref("posts/"+key+"/responses/" + i);
+									// dbRef.once("value", function(snap){
+									// 	console.log(hypescore);
+									// 	dbRef.update({
+									// 		hypescore : newval
+									// 	});
+									// });
+									//  firebase.database().ref(sb).update({sb:newval});
+								});
 							} else if (element.type == "video") {
 								let responseContainer = $(`<div class="row">
 									<div class="col-3 py-3 my-3 ml-auto">	
@@ -316,10 +341,10 @@
 										<div class="mb-2">
 											<span>` + element.val + `</span>
 										</div>
-										<button id="hypescore-up-` + key + i + ` type="button" class="hype-btn btn btn-primary">
+										<button id="hypescore-up-` + key + i + `" type="button" class="hype-btn btn btn-primary">
   											 🔥 
 										</button>
-										<button id="hypescore-up-` + key + i + ` type="button" class="downhype-btn btn btn-primary">
+										<button id="hypescore-down-` + key + i + `" type="button" class="downhype-btn btn btn-primary">
   											 🤮
 										</button>
 										<span class="ml-1 badge badge-light">` + element.hypescore + `</span>
