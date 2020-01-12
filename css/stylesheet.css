@@ -62,7 +62,7 @@ html, body{
   background-color: #F1F1F1;
   font-family: "RedHatText";
  /* background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);*/
-  background: linear-gradient(355deg, #00b7ff, #b3ff00, #ff931f, #f1f1f1);
+  background: linear-gradient(355deg, #00b7ff, #b3ff00, #ff931f);
   background-size: 800% 800%;
 
   -webkit-animation: AnimationName 45s ease infinite;
@@ -72,7 +72,7 @@ html, body{
 }
 
 
-background: linear-gradient(355deg, #00b7ff, #b3ff00, #ff931f, #f1f1f1);
+background: linear-gradient(355deg, #00b7ff, #b3ff00, #ff931f);
 background-size: 800% 800%;
 
 -webkit-animation: AnimationName 30s ease infinite;
