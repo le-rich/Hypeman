@@ -118,70 +118,8 @@
 						<button type="button" id="submit-form-btn" class="ml-auto btn btn-primary btn-sm mb-3">Submit Post</button>
 					</div>
 				</div>
-				<div id="post-container" class="anim-swoosh-down">
-					<!-- POST ============================== -->
-					<div class="container-fluid mb-3 ask-post shadow-sm text-left">
-						<div class="row">
-							<div class="col-12">
-								<div class="container-fluid">
-									<div class="post-main row speech-bubble-left mt-3 shadow-sm">
-										<div class="col-12 mt-3">
-											<h2 class="">
-												<img class="post-picture-div" class="mx-auto my-4"></img>
-												<span id="user-says" class="font-weight-bold">BlackBeltGoose says:
-												</span>
-											</h2>
-											<p class="ml-5 font-italic font-weight-light">I've been unemployed for two
-												years and I am heading into a job interview. I'm so nervous, give me
-												your energy!!</p>
-										</div>
-										<div class="mx-3 my-3">
-											<button type="button" class="hype-btn btn btn-primary">
-												SEND HYPE 🔥 <span class="badge badge-light">7</span>
-											</button>
-										</div>
-									</div>
-									<div class="row mt-3">
-										<div class="col-1">
-											<span class="font-weight-bold">Tags: </span>
-										</div>
-										<div class="col-9 mr-auto">
-											<span class="badge badge-danger">HYPE EMERGENCY</span>
-											<span class="badge badge-warning">LOW ON HYPE</span>
-											<span class="badge badge-success">POSITIVE ENERGY</span>
-											<span class="badge badge-success">LET'S GET THIS BREAD</span>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-3 py-3 my-3 ml-auto">
-
-										</div>
-										<div class="col-6 post-response py-3 my-3 speech-bubble-right">
-											<div class="mb-2">
-												<span>This is a response.</span>
-											</div>
-											<button type="button" class="hype-btn btn btn-primary">
-												🔥
-											</button>
-											<button type="button" class="downhype-btn btn btn-primary">
-												🤮
-											</button>
-											<span class="ml-1 badge badge-light">7</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="row my-2">
-							<div class="col-6 mx-auto mb-3 mt-4 text-center">
-								<div class="mb-3">
-									<textarea id="response-text" class="mt-3 form-control" rows="2" placeholder="Enter your message..." required></textarea>
-								</div>
-								<button type="button" class="btn btn-primary font-weight-bold">+ SEND RESPONSE</button>
-							</div>
-						</div>
-					</div>
-					<!-- POST ============================= -->
+				<div id="post-container" class="anim-swoosh-down-slow">
+				<!-- POST CONTAINER -->
 				</div>
 			</div>
 			<div class="col-1 mr-auto"></div>
@@ -276,7 +214,7 @@
 					let post = snap.val()[key];
 					var container = $(`
 				<!-- POST ============================== -->
-				<div class="container-fluid mb-3 ask-post shadow-sm text-left">
+				<div class="container-fluid mb-3 ask-post shadow-sm text-left anim-jelly">
 					<div class="row">
 						<div class="col-12">
 							<div id="reponse-container-` + key + `" class="container-fluid">
