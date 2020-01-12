@@ -14,13 +14,13 @@
 </head>
 
 <body>
-	<div id="hype-boost-button" class="button text-center shadow-sm">
-		<img src="css/img/hype.png" width="auto" height="64px">
+	<div id="hype-boost-button" class="button text-center shadow-sm anim-swoosh-right">
+		<img src="css/img/hype-black.png" width="auto" height="64px">
 	</div>
 	<div id="header-container" class="container-fluid text-left">
 		<div id="header-row" class="row">
 			<div class="col-2 mr-auto my-2">
-				<h1 id="title">
+				<h1 id="title" class="anim-swoosh-left">
 					<!-- LOGO HERE -->
 					<img src="css/img/logo2.png" width="auto" height="42px">
 				</h1>
@@ -28,15 +28,15 @@
 			<div class="col-2 ml-auto">
 				<div class="container-fluid text-center">
 					<div class="row">
-						<div id="profile-card" class="col-11">
-							<div id="profile-picture-div" class="mx-auto my-4"></div>
-							<div id="profile-elements">
-								<h4>Demoman</h4>
-								<p>7 asks 🤔 4,300 Hypes 🔥</p>
-								<h5 class="my-3 mt-5"><a href="">My Asks</a></h5>
-								<h5 class="my-3"><a href="">Network</a></h5>
-								<h5 class="mt-3 mb-5"><a href="">Search</a></h5>
-							</div>
+						<div id="profile-card" class="col-11 anim-swoosh-right-slow">
+								<div id="profile-picture-div" class="mx-auto my-4"></div>
+								<div id="profile-elements">
+									<h4>Demoman</h4>
+									<p>7 asks 🤔 4,300 Hypes 🔥</p>
+									<h5 class="my-3 mt-5"><a href="">My Asks</a></h5>
+									<h5 class="my-3"><a href="">Network</a></h5>
+									<h5 class="mt-3 mb-5"><a href="">Search</a></h5>
+								</div>
 							<div class="pointer">
 								<div class="triangleWrapper">
 									<div style="height: 100%;" class="lefttriangle"></div>
@@ -54,7 +54,7 @@
 	<div id="header-spacer"></div>
 	<div id="body-container" class="container-fluid text-left">
 		<div class="row mt-5">
-			<div class="col-2 ml-1 mr-5">
+			<div class="col-2 ml-1 mr-5 anim-swoosh-left-slow">
 				<h5 class="ml-2">This week's hypest</h5>
 				<ul class="list-group shadow-sm">
 					<li class="list-group-item">Cras justo odio</li>
@@ -111,11 +111,11 @@
 					<button type="button" class="btn btn-primary btn-sm mb-3">send</button>
 				</div>
 				<!-- POST ============================== -->
-				<div class="container-fluid mb-3 ask-post shadow-sm text-left">
+				<div class="container-fluid mb-3 ask-post shadow-sm text-left anim-swoosh-down">
 					<div class="row">
 						<div class="col-12">
 							<div class="container-fluid">
-								<div class="post-main row speech-bubble mt-3 shadow-sm">
+								<div class="post-main row speech-bubble-left mt-3 shadow-sm">
 									<div class="col-12 mt-3">
 										<h2 class="">
 											<img class="post-picture-div" class="mx-auto my-4"></img>
@@ -138,17 +138,17 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-6 ml-auto">
+									<div class="col-6 ml-auto post-response py-3 my-3 speech-bubble-right">
 										This is a response.
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-6 ml-auto">
+									<div class="col-6 ml-auto post-response py-3 my-3 speech-bubble-right">
 										This is a response.
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-6 ml-auto">
+									<div class="col-6 ml-auto post-response py-3 my-3 speech-bubble-right">
 										This is a response.
 									</div>
 								</div>
@@ -166,6 +166,13 @@
 			<div class="col-1 mr-auto"></div>
 		</div>
 	</div>
+
+
+
+
+
+
+
 	<!-- BOOTSTRAP -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
@@ -178,6 +185,27 @@
 	</script>
 	<!-- CUSTOM -->
 	<script type="text/javascript" src="js/main.js"></script>
+
+
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+	     https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script>
+	  // Your web app's Firebase configuration
+	  var firebaseConfig = {
+	    apiKey: "AIzaSyB4IG6DOJJHWoD4H50Pibt2fMU7fcdWuTo",
+	    authDomain: "hypeman-nw2020.firebaseapp.com",
+	    databaseURL: "https://hypeman-nw2020.firebaseio.com",
+	    projectId: "hypeman-nw2020",
+	    storageBucket: "hypeman-nw2020.appspot.com",
+	    messagingSenderId: "342502727786",
+	    appId: "1:342502727786:web:0d2756e8455b53d9f82a13"
+	  };
+	  // Initialize Firebase
+	  firebase.initializeApp(firebaseConfig);
+	</script>
 </body>
 
 </html>
