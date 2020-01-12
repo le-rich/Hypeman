@@ -122,10 +122,13 @@ function StartCollectHype(){
 function StopCollectHype(){
 	collecting = false;
 	$("#hype-count").text("" + (parseInt($("#hype-count").text(), 10) + parseInt($("#boost-val").text(), 10)));	
-    var dbPostRef = firebase.database().ref("gb_hypescore");
+    var dbPostRef = firebase.database().ref("/");
+    var newval = parseInt($("#hype-count").text(), 10);
     dbPostRef.once("value", function(snap){
-       dbPostRef.update(parseInt($("#hype-count").text(), 10));
-    });
+       dbPostRef.update({
+            "gb_hypescore": newval
+        });
+   });
 }
 
 
@@ -166,16 +169,31 @@ $("#submit-form-btn").click(function(){
 
 });
 
+function createResponse(postId){
+    console.log(postId);
+    var newtext = $("#response-text").val();
 
-function increaseGlobalHype(){
-    console.log("gelp")
-    var dbPostRef = firebase.database().ref("/");
+    var dbPostRef = firebase.database().ref("posts/" + postId + "/responses");
     dbPostRef.once("value", function(snap){
-        console.log(snap.val())
-        let newval = snap.val()+1;
-       dbPostRef.update({gb_hypescore:newval});
+        dbPostRef.push(
+            {
+                "hypescore": 0,
+                "type": "text",
+                "val": newtext
+            }
+        );
     });
 }
 
 
+function increaseGlobalHype(){
+    var dbPostRef = firebase.database().ref("/");
+    $("#hype-count").text(parseInt($("#hype-count").text(), 10) + 1);
+    var newval = parseInt($("#hype-count").text(), 10);
+    dbPostRef.once("value", function(snap){
+       dbPostRef.update({
+            "gb_hypescore": newval
+        });
+   });
+}
 
