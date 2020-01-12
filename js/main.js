@@ -187,9 +187,13 @@ function createResponse(postId){
 
 
 function increaseGlobalHype(){
-    var dbPostRef = firebase.database().ref("gb_hypescore");
+    var dbPostRef = firebase.database().ref("/");
+    $("#hype-count").text(parseInt($("#hype-count").text(), 10) + 1);
+    var newval = parseInt($("#hype-count").text(), 10);
     dbPostRef.once("value", function(snap){
-       dbPostRef.update(snap.val()++);
-    });
+       dbPostRef.update({
+            "gb_hypescore": newval
+        });
+   });
 }
 
