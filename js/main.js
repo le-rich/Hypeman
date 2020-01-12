@@ -122,7 +122,7 @@ function StartCollectHype(){
 function StopCollectHype(){
 	collecting = false;
 	$("#hype-count").text("" + (parseInt($("#hype-count").text(), 10) + parseInt($("#boost-val").text(), 10)));	
-    var dbPostRef = firebase.database().ref("/");
+    var dbPostRef = firebase.database().ref();
     var newval = parseInt($("#hype-count").text(), 10);
     dbPostRef.once("value", function(snap){
        dbPostRef.update({
@@ -170,9 +170,7 @@ $("#submit-form-btn").click(function(){
 });
 
 function createResponse(postId){
-    console.log(postId);
-    var newtext = $("#response-text").val();
-
+    var newtext = $("#response-text-" + postId).val();
     var dbPostRef = firebase.database().ref("posts/" + postId + "/responses");
     dbPostRef.once("value", function(snap){
         dbPostRef.push(
@@ -183,6 +181,20 @@ function createResponse(postId){
             }
         );
     });
+}
+
+function increasePostResponse(postId){
+    var dbPostRef = firebase.database().ref("posts/" + postId);
+    dbPostRef.once("value", function(snap){
+        var newval = snap.val().hypescore + 1;
+        console.log(newval);
+        dbPostRef.update(
+            {
+                "hypescore": newval,
+            }
+        );
+    });
+    increaseGlobalHype();
 }
 
 
